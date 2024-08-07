@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create authorities table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: users(id)
+                    foreignKeyName: fk_authorities_to_users
+              - column:
+                  name: role
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+
+            remarks: Table to store information about relation between user and role

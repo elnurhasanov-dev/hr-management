@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create position table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: position
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: position_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+
+            remarks: Table to store information about position

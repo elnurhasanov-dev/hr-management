@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create department table
+      author: ELnur Hasanov
+      changes:
+        - createTable:
+            tableName: department
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: department_name
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+
+            remarks: Table to store information about department

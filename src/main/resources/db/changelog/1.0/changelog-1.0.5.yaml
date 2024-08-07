@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create users table
+      author: ELnur Hasanov
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: text
+                  constraints:
+                    nullable: false
+
+            remarks: Table to store information about users

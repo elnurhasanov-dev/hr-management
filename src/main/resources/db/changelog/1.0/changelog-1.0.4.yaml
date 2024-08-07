@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create employee projects
+      author: ELnur Hasanov
+      changes:
+        - createTable:
+            tableName: employee_projects
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: project_handled
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_started
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_ended
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: employee_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_employee_projects_to_employee
+                    references: employee(id)
+                    nullable: true
+
+            remarks: Table to store information about employee projects
