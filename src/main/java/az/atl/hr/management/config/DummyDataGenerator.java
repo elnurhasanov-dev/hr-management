@@ -3,7 +3,7 @@ package az.atl.hr.management.config;
 import az.atl.hr.management.dao.entity.UserEntity;
 import az.atl.hr.management.dao.repository.UserRepository;
 import az.atl.hr.management.model.enums.Role;
-import az.atl.hr.management.model.request.CreateUserRequest;
+import az.atl.hr.management.model.request.AuthSignupRequest;
 import az.atl.hr.management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -24,19 +24,19 @@ public class DummyDataGenerator implements CommandLineRunner {
     }
 
     private void createDummyData() {
-        CreateUserRequest request = CreateUserRequest.builder()
+        AuthSignupRequest request = AuthSignupRequest.builder()
                 .username("rustem")
                 .password("password")
-                .roles(Set.of(Role.ROLE_ADMIN))
+                .roles(Set.of(Role.ADMIN))
                 .build();
-        userService.createUser(request);
+        userService.signupWithUsernameAndPassword(request);
 
-        CreateUserRequest request2 = CreateUserRequest.builder()
+        AuthSignupRequest request2 = AuthSignupRequest.builder()
                 .username("elnur")
                 .password("password")
 //                .roles(Set.of(Role.ROLE_USER))
                 .build();
-        userService.createUser(request2);
+        userService.signupWithUsernameAndPassword(request2);
 
     }
 

@@ -4,13 +4,16 @@ import az.atl.hr.management.model.response.ExceptionResponse;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.security.SignatureException;
+import java.util.stream.Collectors;
 
 import static az.atl.hr.management.model.enums.ErrorMessage.*;
 import static org.springframework.http.HttpStatus.*;
@@ -18,7 +21,7 @@ import static org.springframework.http.HttpStatus.*;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-
+    /** SECURITY AND JWT EXCEPTIONS */
     @ExceptionHandler(ExpiredJwtException.class)
     @ResponseStatus(FORBIDDEN)
     public ExceptionResponse handle(ExpiredJwtException ex) {
@@ -67,6 +70,7 @@ public class GlobalExceptionHandler {
                 ACCESS_DENIED.getMessage());
     }
 
+    /** NOT FOUND EXCEPTION */
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(NOT_FOUND)
     public ExceptionResponse handle(NotFoundException ex) {
@@ -74,6 +78,21 @@ public class GlobalExceptionHandler {
         return new ExceptionResponse(ex.getCode(), ex.getMessage());
     }
 
+    /** FIELD EXCEPTION */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(BAD_REQUEST)
+    public ExceptionResponse handle(MethodArgumentNotValidException ex) {
+        log.error("MethodArgumentNotValidException : " + ex);
+        String errorMessage = ex.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(", "));
+
+        return new ExceptionResponse(ex.getStatusCode().toString(), errorMessage);
+    }
+
+    /** UNEXPECTED EXCEPTION */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     public ExceptionResponse handle(Exception ex) {

@@ -3,8 +3,8 @@ package az.atl.hr.management.model.enums;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-    ROLE_USER,
-    ROLE_ADMIN;
+    USER,
+    ADMIN;
     @Override
     public String getAuthority() {
         return name();
