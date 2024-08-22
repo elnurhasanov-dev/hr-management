@@ -16,11 +16,11 @@ import java.util.Set;
 @Builder
 public class AuthSignupRequest {
     @NotEmpty(message = "Username is required!")
-    @Size(min = 2, max = 20, message = "Please enter a username between 2 and 20 characters")
+    @Size(min = 3, max = 30, message = "Please enter a username between 3 and 30 characters")
     private String username;
 
     @NotEmpty(message = "Password is required!")
-    @Size(min = 6, max = 20, message = "Please enter a password between 6 and 20 characters")
+    @Size(min = 8, max = 64, message = "Please enter a password between 8 and 64 characters")
     private String password;
 
     private Set<Role> roles;

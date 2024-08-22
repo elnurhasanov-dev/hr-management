@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: Create users table
-      author: ELnur Hasanov
+      author: Elnur Hasanov
       changes:
         - createTable:
             tableName: users
@@ -15,13 +15,13 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: username
-                  type: varchar(255)
+                  type: varchar(30)
                   constraints:
-                    nullable: false
                     unique: true
+                    nullable: false
               - column:
                   name: password
-                  type: varchar(255)
+                  type: varchar(64)
                   constraints:
                     nullable: false
 

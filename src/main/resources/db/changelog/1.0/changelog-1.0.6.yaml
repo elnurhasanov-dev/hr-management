@@ -15,7 +15,7 @@ databaseChangeLog:
                     foreignKeyName: fk_authorities_to_users
               - column:
                   name: role
-                  type: varchar(25)
+                  type: varchar(100)
                   constraints:
                     nullable: false
 

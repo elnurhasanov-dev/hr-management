@@ -2,6 +2,7 @@ package az.atl.hr.management.security;
 
 import az.atl.hr.management.service.CustomUserDetailsService;
 import az.atl.hr.management.service.JwtService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -16,10 +17,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 
 @Slf4j
 @Component
@@ -65,6 +73,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (ExpiredJwtException | MalformedJwtException | IllegalArgumentException ex) {
             resolver.resolveException(request, response, null, ex);
+//            response.setHeader("error", ex.getMessage());
+//            response.sendError(FORBIDDEN.value());
+//            Map<String, String> error = new HashMap<>();
+//            error.put("error_message", ex.getMessage());
+//            response.setContentType(APPLICATION_JSON_VALUE);
+//            new ObjectMapper().writeValue(response.getOutputStream(), error);
         }
 
     }

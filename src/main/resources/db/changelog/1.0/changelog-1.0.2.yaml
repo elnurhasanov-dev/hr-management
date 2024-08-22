@@ -15,7 +15,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: department_name
-                  type: varchar(45)
+                  type: varchar(100)
                   constraints:
                     nullable: false
 

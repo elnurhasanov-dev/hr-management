@@ -4,6 +4,7 @@ import az.atl.hr.management.model.enums.GenderModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class EmployeeEntity {
 
     private String lastName;
 
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     @Enumerated(STRING)
     private GenderModel gender;
