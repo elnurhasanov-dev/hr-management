@@ -36,15 +36,11 @@ public class EmployeeProjectEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeeProjectEntity that = (EmployeeProjectEntity) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(projectHandled, that.projectHandled)
-                && Objects.equals(dateStarted, that.dateStarted)
-                && Objects.equals(dateEnded, that.dateEnded)
-                && Objects.equals(employee, that.employee);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, projectHandled, dateStarted, dateEnded, employee);
+        return Objects.hash(id);
     }
 }

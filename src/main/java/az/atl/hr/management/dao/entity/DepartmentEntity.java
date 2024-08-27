@@ -36,13 +36,11 @@ public class DepartmentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DepartmentEntity that = (DepartmentEntity) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(departmentName, that.departmentName)
-                && Objects.equals(employee, that.employee);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, departmentName, employee);
+        return Objects.hash(id);
     }
 }

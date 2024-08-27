@@ -49,16 +49,11 @@ public class EmployeeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeeEntity that = (EmployeeEntity) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(firstName, that.firstName)
-                && Objects.equals(lastName, that.lastName)
-                && Objects.equals(birthday, that.birthday)
-                && gender == that.gender
-                && Objects.equals(address, that.address);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthday, gender, address);
+        return Objects.hash(id);
     }
 }

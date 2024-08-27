@@ -35,13 +35,11 @@ public class PositionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PositionEntity that = (PositionEntity) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(positionName, that.positionName)
-                && Objects.equals(position, that.position);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, positionName, position);
+        return Objects.hash(id);
     }
 }
