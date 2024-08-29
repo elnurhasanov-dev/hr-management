@@ -15,7 +15,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "employee_project")
+@Table(name = "employee_projects")
 public class EmployeeProjectEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -28,6 +28,7 @@ public class EmployeeProjectEntity {
     private LocalDateTime dateEnded;
 
     @ManyToOne(cascade = ALL)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     @ToString.Exclude
     private EmployeeEntity employee;
 

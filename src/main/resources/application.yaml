@@ -16,6 +16,8 @@ spring:
         ddl-auto: update
         temp:
           use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: validate
   # Liquibase
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
