@@ -8,3 +8,6 @@
 * Spring Boot Security
 * Spring Boot Validation
 * JWT
+* Spock-spring
+* Groovy
+* Github benas random-beans
