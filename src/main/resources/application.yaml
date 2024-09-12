@@ -23,10 +23,18 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
   main:
     allow-bean-definition-overriding: true
+
+# Port
 server:
   port: 8080
+
 # JWT key
 security:
   jwt:
     secret-key: 5ro7kcegbwT9FtQ1IRTwn8HgC+yG2cLM0hTTvRyQW6dIGE8SOveaA68GoodwTjiZ217ai63O8nCxrM6m9zE0gb33hSfuHR0wyUpHTlSX3CB4cPqI4F4c65XdrIU+yIPv2sqHZphep+V7H+T7kF0dLVGbfvLlUBGZm6rAFXYynKc=
     expiration-time: 3600000
+
+# Swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
