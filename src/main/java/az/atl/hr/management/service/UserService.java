@@ -32,12 +32,14 @@ public class UserService {
     }
 
     public String loginWithUsernameAndPassword(AuthLoginRequest request) {
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
                 )
         );
+
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(request.getUsername());
         }

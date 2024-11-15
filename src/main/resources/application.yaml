@@ -3,7 +3,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/demo_name
+    url: jdbc:postgresql://localhost:5432/hr_management
     username: postgres
     password: admin
   # JPA properties
@@ -21,8 +21,15 @@ spring:
   # Liquibase
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
-  main:
-    allow-bean-definition-overriding: true
+  # RabbitMq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # Bean
+    main:
+      allow-bean-definition-overriding: true
 
 # Port
 server:
